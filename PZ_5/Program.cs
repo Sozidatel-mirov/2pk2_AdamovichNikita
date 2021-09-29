@@ -36,9 +36,12 @@ namespace PZ_5
             Console.WriteLine();
             Console.WriteLine("задание 4");
             //ЗАДАНИЕ 4
-            for (int c = 0; c < 100; c += 3)//так как просто прибавляя три мы и будем получать кратные трём, я решил обойтись без %
+            for (int c = 0; c < 100; c++)//так как просто прибавляя три мы и будем получать кратные трём, я решил обойтись без %
             {
-                Console.WriteLine(c);
+                if (c%3 == 0)
+                {
+                    Console.WriteLine(c);
+                }
             }
             Console.WriteLine("задание 5");
             //ЗАДАНИЕ 5
