@@ -10,22 +10,22 @@ namespace PZ_2._3
         public int dividend;
         public int divider;
 
-        public FractionalNumber(int n, int b)
+        public FractionalNumber(int n = 1, int b = 1)
         {
             dividend = n;
             divider = b;
         }
-        public FractionalNumber(char a, int n, int b)
+        public FractionalNumber(char a = '+', int n = 1, int b = 1)
         {
             sign = a;
             dividend = n;
             divider = b;
         }
-        public FractionalNumber(int n)
+        public FractionalNumber(int n = 1)
         {
             dividend = n;
         }
-        public FractionalNumber(char a, int n)
+        public FractionalNumber(char a = '+', int n = 1)
         {
             sign = a;
             dividend = n;
