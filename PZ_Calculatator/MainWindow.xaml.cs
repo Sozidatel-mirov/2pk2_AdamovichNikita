@@ -16,9 +16,6 @@ using System.Text.RegularExpressions;
 
 namespace PZ_Calculatator
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private static string expression;
