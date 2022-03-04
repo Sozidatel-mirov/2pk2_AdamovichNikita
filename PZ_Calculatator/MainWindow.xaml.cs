@@ -119,13 +119,13 @@ namespace PZ_Calculatator
             string text = expression;
             string[] newText = Regex.Split(text, "[-+*/]+");
             if (znak == "+")
-                AUG.Text += $"\n{Convert.ToString(Convert.ToDouble(newText[0]) + Convert.ToDouble(newText[1]))}";
+                AUG.Text = $"{Convert.ToString(Convert.ToDouble(newText[0]) + Convert.ToDouble(newText[1]))}";
             else if (znak == "-")
-                AUG.Text += $"\n{Convert.ToString(Convert.ToDouble(newText[0]) - Convert.ToDouble(newText[1]))}";
+                AUG.Text = $"{Convert.ToString(Convert.ToDouble(newText[0]) - Convert.ToDouble(newText[1]))}";
             else if (znak == "*")
-                AUG.Text += $"\n{Convert.ToString(Convert.ToDouble(newText[0]) * Convert.ToDouble(newText[1]))}";
+                AUG.Text = $"{Convert.ToString(Convert.ToDouble(newText[0]) * Convert.ToDouble(newText[1]))}";
             else if (znak == "/")
-                AUG.Text += $"\n{Convert.ToString(Convert.ToDouble(newText[0]) / Convert.ToDouble(newText[1]))}";
+                AUG.Text = $"{Convert.ToString(Convert.ToDouble(newText[0]) / Convert.ToDouble(newText[1]))}";
             else
                 AUG.Text = "ERROR";
         }
