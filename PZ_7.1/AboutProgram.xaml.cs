@@ -15,21 +15,13 @@ using System.Windows.Shapes;
 namespace PZ_77
 {
     /// <summary>
-    /// Логика взаимодействия для CreateFileWindow.xaml
+    /// Логика взаимодействия для AboutProgram.xaml
     /// </summary>
-    public partial class CreateFileWindow : Window
+    public partial class AboutProgram : Window
     {
-        public CreateFileWindow()
+        public AboutProgram()
         {
             InitializeComponent();
-        }
-        private void Accept_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
-        }
-        public string FileName
-        {
-            get { return fileNameBox.Text; }
         }
     }
 }
