@@ -10,9 +10,9 @@
         <StackPanel DockPanel.Dock="Top" Background="LightGreen">
             <Menu VerticalAlignment="Top">
                 <MenuItem Header="File">
-                    <MenuItem Header="Open" ></MenuItem>
-                    <MenuItem Header="New" ></MenuItem>
-                    <MenuItem Header="Save" ></MenuItem>
+                    <MenuItem Header="Open" Click="Click_Open" ></MenuItem>
+                    <MenuItem Header="New" Click="Click_New" ></MenuItem>
+                    <MenuItem Header="Save" Click="Click_Save"></MenuItem>
                     <Separator/>
                     <MenuItem Header="Exit" ></MenuItem>
                 </MenuItem>
@@ -38,7 +38,9 @@
             </WrapPanel>
         </StackPanel>
         <StatusBar DockPanel.Dock="Bottom" Background="LightBlue">Заглушка</StatusBar>
-        <ListBox DockPanel.Dock="Left" Background="GreenYellow" >Заглушка</ListBox>
+        <ListBox x:Name="FileList" DockPanel.Dock="Left" Background="GreenYellow" >
+            <TextBlock FontWeight="Bold" TextDecorations="Underline" Text="Files:" />
+        </ListBox>
         <RichTextBox x:Name="MainText" FontSize="20" SpellCheck.IsEnabled="True" Language="ru-ru"></RichTextBox>
     </DockPanel>
 </Window>
