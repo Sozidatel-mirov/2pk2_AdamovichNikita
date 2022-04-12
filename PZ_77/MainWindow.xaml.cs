@@ -23,6 +23,7 @@ namespace PZ_77
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string path = @"Data\";
         bool isBold;
         bool isItalic;
         bool isUnderline;
@@ -34,14 +35,21 @@ namespace PZ_77
             InitializeComponent();
             if (isShowListFiles == false)
             {
-                DirectoryInfo dir = new DirectoryInfo(@"C:\Users\Создатель\Desktop\PZ_77\PZ_77\Data");
-                FileInfo[] files = dir.GetFiles("*.txt");
-                foreach (FileInfo fi in files)
+                DirectoryInfo dir = new DirectoryInfo(path);
+                if (!dir.Exists)
                 {
-                    FileList.Items.Add(fi.ToString());
+                    dir.Create();
                 }
-                isShowListFiles = true;
-                isShowListFiles = false;
+                else
+                {
+                    FileInfo[] files = dir.GetFiles("*.txt");
+                    foreach (FileInfo fi in files)
+                    {
+                        FileList.Items.Add(fi.ToString());
+                    }
+                    isShowListFiles = true;
+                    isShowListFiles = false;
+                }
             }
         }
 
@@ -74,7 +82,7 @@ namespace PZ_77
             CreateFileWindow createFileWindow = new CreateFileWindow();
                 if (createFileWindow.ShowDialog() == true)
                 {
-                    File.Create(@"C:\Users\Создатель\Desktop\PZ_77\PZ_77\Data\" + $"{createFileWindow.FileName}" + ".txt");
+                    File.Create(path + $"{createFileWindow.FileName}" + ".txt");
                     FileList.Items.Add($"{createFileWindow.FileName}" + ".txt");
                 }
             createFileWindow.Close();
@@ -86,7 +94,7 @@ namespace PZ_77
             int col = MainText.CaretIndex - MainText.GetCharacterIndexFromLineIndex(row);
             cursorPosition.Text = "строка: " + (row + 1) + ", столбец: " + (col + 1) + " Saved";
             string r = $"{FileList.SelectedItem}";
-            StreamWriter streamWriter = new StreamWriter(@"C:\Users\Создатель\Desktop\PZ_77\PZ_77\Data\" + r);
+            StreamWriter streamWriter = new StreamWriter(path + r);
             streamWriter.WriteLine(MainText.Text);
             streamWriter.Close();
         }
@@ -94,16 +102,16 @@ namespace PZ_77
         private void FileList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string r = $"{FileList.SelectedItem}";
-            if (File.Exists(@"C:\Users\Создатель\Desktop\PZ_77\PZ_77\Data\" + r))
+            if (File.Exists(path + r))
             {
                 MainText.Clear();
-                FileStream open = new FileStream(@"C:\Users\Создатель\Desktop\PZ_77\PZ_77\Data\" + $"{r}", FileMode.OpenOrCreate, FileAccess.Read);
+                FileStream open = new FileStream(path + $"{r}", FileMode.OpenOrCreate, FileAccess.Read);
                 StreamReader file = new StreamReader(open);
                 MainText.AppendText(file.ReadToEnd());
                 file.Close();
             }
-            FileInfo file1 = new FileInfo(@"C:\Users\Создатель\Desktop\PZ_77\PZ_77\Data\" + $"{FileList.SelectedItem}");
-            informait.Text = $"{file1.CreationTime}   {file1.Length / 1024} Кб";
+            //FileInfo file1 = new FileInfo(path + $"{FileList.SelectedItem}");
+            //informait.Text = $"{file1.CreationTime}   {file1.Length / 1024} Кб";
             int row = MainText.GetLineIndexFromCharacterIndex(MainText.CaretIndex);
             int col = MainText.CaretIndex - MainText.GetCharacterIndexFromLineIndex(row);
             cursorPosition.Text = "строка: " + (row + 1) + ", столбец: " + (col + 1) + " Saved";
@@ -154,7 +162,7 @@ namespace PZ_77
 
         private void Create_sample_Click(object sender, RoutedEventArgs e)
         {
-            FileStream open = new FileStream(@"C:\Users\Создатель\Desktop\PZ_77\PZ_77\Sample\Sample.txt", FileMode.OpenOrCreate, FileAccess.Write);
+            FileStream open = new FileStream(@"Sample\Sample.txt", FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter writer = new StreamWriter(open);
             writer.WriteLine(MainText.Text);
             writer.Close();
@@ -163,7 +171,7 @@ namespace PZ_77
         private void Load_sample_Click(object sender, RoutedEventArgs e)
         {
             MainText.Clear();
-            FileStream open = new FileStream(@"C:\Users\Создатель\Desktop\PZ_77\PZ_77\Sample\Sample.txt", FileMode.OpenOrCreate, FileAccess.Read);
+            FileStream open = new FileStream(@"Sample\Sample.txt", FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader reader = new StreamReader(open);
             MainText.AppendText(reader.ReadToEnd());
             reader.Close();
@@ -173,11 +181,11 @@ namespace PZ_77
         {
             informait.Text = "0 Кб";
             string r = $"{FileList.SelectedItem}";
-            if (File.Exists(@"C:\Users\Создатель\Desktop\PZ_77\PZ_77\Data\" + r))
+            if (File.Exists(path + r))
             {
-                File.Delete(@"C:\Users\Создатель\Desktop\PZ_77\PZ_77\Data\" + r);
+                File.Delete(path + r);
             }
-            //FileList.Items.RemoveAt(FileList.SelectedIndex);
+            FileList.Items.RemoveAt(FileList.SelectedIndex);
             
         }
 
