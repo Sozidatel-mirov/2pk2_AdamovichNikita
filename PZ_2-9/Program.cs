@@ -8,19 +8,16 @@ namespace PZ_2_9
     {
         static void Main(string[] args)
         {
-
-            Bancc chet = new Bancc(1000);
-            Client client = new Client(chet);
-
-            client.slejka();
-            Console.WriteLine();
-            Console.WriteLine("Снять 990");
-            chet.sniat(990);
-            client.slejka();
-            Console.WriteLine();
-            Console.WriteLine("Внести 1000");
-            chet.vnesti(1000);
-            client.slejka();
+            Bancc chet = new Bancc(25);
+            Client client = new Client();
+            chet.MyEvent += client.Error;
+            Console.WriteLine("Создать автоплатёж");
+            chet.avtoplatej();
+            chet.MyEvent -= client.Error;
+            chet.MyEvent += client.NotError;
+            Console.WriteLine("Внести 10000");
+            chet.vnesti(10000);
+            chet.avtoplatej();
         }
     }
 }

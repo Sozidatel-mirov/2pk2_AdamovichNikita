@@ -13,13 +13,34 @@ namespace PZ_2_9
         {
             chet = ppp;
         }
-        public void sniat(int sum)
+        public event MyDelegate MyEvent;
+
+        public void avtoplatej()
         {
-            chet -= sum;
+            for(int i = 0; i < chet; i = 0)
+            {
+                chet--;
+                if (chet < 10)
+                {
+                    if (MyEvent != null)
+                    {
+                        MyEvent();
+                    }
+                }
+                Console.WriteLine(chet);
+            }  
         }
         public void vnesti(int sum)
         {
             chet += sum;
+            if (chet > 10)
+            {
+                if (MyEvent != null)
+                {
+                    MyEvent();
+                }
+            }
+            Console.WriteLine(chet);
         }
     }
 }
