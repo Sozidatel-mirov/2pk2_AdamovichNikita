@@ -5,12 +5,10 @@ namespace PZ_11
     {
         unsafe static void Main(string[] args)
         {
-            double val;
+            double val;//Создание переменной double
+            byte* x = (byte*)&val; //указатель на знанчения типа double
 
-            byte* x = (byte*)&val; //указатели на знанчения типа double
-
-
-            //запись значений в указатели
+            //запись значений в указатель
 
             x[0] = 1;
             x[1] = (byte)'A';
@@ -20,7 +18,7 @@ namespace PZ_11
             x[5] = 2;
             x[6] = 2;
             x[7] = 3;
-
+            //вывод значений 
             Console.WriteLine("Адрес\t\tЗначение");
             Console.WriteLine($"{(uint)&x[0]}\t{x[0]}");
             Console.WriteLine($"{(uint)&x[1]}\t{(char)x[1]}");
