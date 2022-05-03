@@ -15,8 +15,8 @@ namespace PZ_2_9
             chet.avtoplatej();
             chet.MyEvent -= client.Error;
             chet.MyEvent += client.NotError;
-            Console.WriteLine("Внести 10000");
-            chet.vnesti(10000);
+            Console.WriteLine("Внести 100");
+            chet.vnesti(100);
             chet.avtoplatej();
         }
     }
